@@ -28,28 +28,28 @@ app.get('/', function(req, res){
 });
 
 
-/////////////////////////////Get Route/////////////////////////////////
-// app.get('/getZombWeapons', function(req, res){
-//   console.log('in getZombWeapons');
-//   zombWeaponModel.find({}, function(err, zombWeaponResults){
-//     if(err){
-//       console.log('error occurred', err);
-//       res.sendStatus(500);
-//     } else{
-//       console.log('zombWeaponResults:', zombWeaponResults);
-//       res.send(zombWeaponResults);
-//     }
-//   });
-// });
+///////////////////////////Get Route/////////////////////////////////
+app.get('/getZombWeapons', function(req, res){
+  console.log('in getZombWeapons');
+  zombWeaponModel.find({}, function(err, zombWeaponResults){
+    if(err){
+      console.log('error occurred', err);
+      res.sendStatus(500);
+    } else{
+      console.log('zombWeaponResults:', zombWeaponResults);
+      res.send(zombWeaponResults);
+    }
+  });
+});
 
 ///////////////////////////////Test Route/////////////////////////////////
 app.get('/test', function(req, res) {
   console.log('in test');
 
-  var justinZomb = new Schema({
-    object_name: String,
-    description: String,
-    rating_damage: { type: Number, min: 0, max: 10 }
+  var justinZomb = new zombWeaponModel({
+    object_name: "hammer",
+    description: "it hammers things",
+    rating_damage: 4
   });
 
     justinZomb.save(function(err) {
