@@ -1,3 +1,3 @@
-myApp.controller("userStashController", ["$scope", function($scope){
+myApp.controller("userStashController", ['$scope', '$http' ,function($scope, $http){
   console.log('In userStashController');
 }]);
