@@ -1,4 +1,4 @@
-//////////////////////General Server Startup//////////////////////////////////
+//////////////////////General Server Startup/////////////////////////////////////////
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -29,7 +29,7 @@ app.get('/', function(req, res){
 
 
 ///////////////////////////Get Items from DB - Get Route////////////////////////////////////////
-app.get('/', function(req, res){
+app.get('/getItems', function(req, res){
   console.log('in getZombWeapons');
   zombWeaponModel.find({}, function(err, zombWeaponResults){
     if(err){
@@ -72,26 +72,3 @@ app.post('/addItem', function(req, res){
 
 // use public
 app.use(express.static('public'));
-
-
-
-// ///////////////////////////////Test Route/////////////////////////////////
-// app.get('/test', function(req, res) {
-//   console.log('in test');
-//
-//   var justinZomb = new zombWeaponModel({
-//     item_name: "hammer",
-//     description: "it hammers things",
-//     rating_damage: 4
-//   });
-//
-//     justinZomb.save(function(err) {
-//       if(err){
-//         console.log(err);
-//         res.sendStatus(500); // nope!
-//       }else{
-//         console.log('justinZomb saved!');
-//         res.sendStatus(201); // 201 - created
-//       }
-//     });
-// });

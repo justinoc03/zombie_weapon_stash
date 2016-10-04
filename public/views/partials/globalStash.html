@@ -1,1 +1,13 @@
 <h2>This is the Global Stash</h2>
+
+  <div ng-init="getItems()">
+    <div ng-repeat="x in allItemsInStash">
+
+    <h4>Zombie Weapon Name: {{x.item_name}}</h4>
+    <h5>Zombie Weapon Description: {{x.description}}</h5>
+    <h5>Damage Rating: {{x.rating_damage}}</h5>
+
+    <hr>
+
+    </div> <!--end of repeat-->
+  </div> <!--end of ng-init-->

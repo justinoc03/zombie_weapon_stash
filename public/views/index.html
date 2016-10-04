@@ -8,17 +8,22 @@
     <script src="../scripts/controllers/globalStashController.js" charset="utf-8"></script>
     <script src="../scripts/controllers/addItemController.js" charset="utf-8"></script>
     <script src="../scripts/controllers/homeController.js" charset="utf-8"></script>
+    <script src="../scripts/controllers/LoggedInControllers/homeControllerLoggedIn.js" charset="utf-8"></script>
     <title>ZWS Index</title>
   </head>
   <body ng-controller="zombieController">
-    <h1>ZWS Index</h1>
 
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#globalStash">Global Stash</a></li>
-    <li><a href="#addItem">Add Item to Stash</a></li>
-  </ul>
+    <div>
+      <h1>Zombie Weapon Stash</h1>
+    </div>
 
-<main ng-view></main>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#globalStash">Global Stash</a></li>
+      <li><a href="#addItem">Add Item to Stash</a></li>
+      <li><a href="#homeli">homeLoggedIn</a></li>
+    </ul>
+
+    <main ng-view></main>
   </body>
 </html>

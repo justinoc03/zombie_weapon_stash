@@ -2,37 +2,26 @@
 
 <div>
 
-        <h2>Add New Item to the Stash!</h2>
-        <input type="text" name="name" value="" placeholder="Item Name" ng-model="item_name">
-        <input type="text" name="name" value="" placeholder="Description" ng-model="description">
-        <select ng-model="rating_damage">
-          <option value="" disabled selected>Damange Rating</option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-        <button type="button" name="button" ng-click="addItem()">Add Item to Stash!</button>
-
-
-        <!-- <div ng-repeat="x in toView">
-            <ul>
-                <li>{{x.name}}</li>
-                <li>{{x.description}}</li>
-                <img ng-src="{{x.photo}}" alt="" />
-            </ul>
-
-        </div> -->
-
-
-        <!-- <button ng-click="login()">Login</button> -->
+        <h4>Add New Item to the Stash!</h4>
+        <form name="addZombItem">
+          <input type="text" name="nameInput" placeholder="Item Name*" ng-model="item_name">
+          <input type="text" name="descriptionInput" placeholder="Description*" ng-model="description">
+          <select name="damageInput" ng-model="rating_damage">
+            <option disabled selected>Damage Rating*</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <input type="submit" ng-click="addItem()" placeholder="Add Item"></input>
+        </form>
 
 
 </div>
