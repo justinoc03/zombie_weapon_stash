@@ -22,9 +22,9 @@ myApp.config(['$routeProvider', function($routeProvider){
         templateUrl: "./views/partials/globalStash.html",
         controller: "globalStashController"
       }).
-      when('/userStash',{
-        templateUrl: "./views/partials/userStash.html",
-        controller: "userStashController"
+      when('/addItem',{
+        templateUrl: "./views/partials/addItem.html",
+        controller: "addItemController"
       }).
       otherwise({
         redirectTo: "/home"

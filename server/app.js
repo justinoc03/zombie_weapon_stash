@@ -28,8 +28,8 @@ app.get('/', function(req, res){
 });
 
 
-///////////////////////////Get Route/////////////////////////////////
-app.get('/getZombWeapons', function(req, res){
+///////////////////////////Get Items from DB - Get Route////////////////////////////////////////
+app.get('/', function(req, res){
   console.log('in getZombWeapons');
   zombWeaponModel.find({}, function(err, zombWeaponResults){
     if(err){
@@ -42,26 +42,56 @@ app.get('/getZombWeapons', function(req, res){
   });
 });
 
-///////////////////////////////Test Route/////////////////////////////////
-app.get('/test', function(req, res) {
-  console.log('in test');
 
-  var justinZomb = new zombWeaponModel({
-    object_name: "hammer",
-    description: "it hammers things",
-    rating_damage: 4
-  });
+///////////////////////////Add Item to DB - Post Route////////////////////////////////////////
+app.post('/addItem', function(req, res){
+  console.log('in post route');
 
-    justinZomb.save(function(err) {
-      if(err){
-        console.log(err);
-        res.sendStatus(500); // nope!
-      }else{
-        console.log('justinZomb saved!');
-        res.sendStatus(201); // 201 - created
-      }
-    });
-});
+  var itemFromUser = req.body;
+  console.log(itemFromUser);
+
+  // create newItem
+  var newItem = new zombWeaponModel({
+    item_name: itemFromUser.item_name,
+    description: itemFromUser.description,
+    rating_damage: itemFromUser.rating_damage,
+  }); // end newItem
+
+  // save newItem
+  newItem.save(function(err){
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('newItem added to Stash');
+      res.sendStatus(201);
+    }
+  }); // end newItem
+}); // end post
+
 
 // use public
 app.use(express.static('public'));
+
+
+
+// ///////////////////////////////Test Route/////////////////////////////////
+// app.get('/test', function(req, res) {
+//   console.log('in test');
+//
+//   var justinZomb = new zombWeaponModel({
+//     item_name: "hammer",
+//     description: "it hammers things",
+//     rating_damage: 4
+//   });
+//
+//     justinZomb.save(function(err) {
+//       if(err){
+//         console.log(err);
+//         res.sendStatus(500); // nope!
+//       }else{
+//         console.log('justinZomb saved!');
+//         res.sendStatus(201); // 201 - created
+//       }
+//     });
+// });

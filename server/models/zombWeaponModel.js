@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 // building object literal for adding "zombWeapons" to db
 var zombWeaponsSchema = new Schema({
-  object_name: String,
+  item_name: String,
   description: String,
   rating_damage: { type: Number, min: 0, max: 10 }
 });
