@@ -9,7 +9,6 @@ myApp.controller('zombieController',['$scope','$http',function($scope,$http){
 }]); // end controller
 
 
-
 //config method doesnt take a name, we are just configuring myApp,
 //It does take in a dependency injection array
 myApp.config(['$routeProvider', function($routeProvider){
