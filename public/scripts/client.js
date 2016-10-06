@@ -1,10 +1,34 @@
 console.log('js is sourced');
 
+//auth0 lock and logoutURL
+var lock = new Auth0Lock( '8V3jER1xj9RjCa6sH0U55nHHVdMryyLT', 'oconnorjustin.auth0.com');
+// log out url, from Auth0
+var logOutUrl = 'https://oconnorjustin.auth0.com/v2/logout';
+
 //must bring in the angular-route via $ngRoute
 //angular-route is dependent on having angular already installed
 var myApp = angular.module('myApp',['ngRoute']);
 
 myApp.controller('zombieController',['$scope','$http',function($scope,$http){
+
+  //auth0 login
+  $scope.logIn = function(){
+      // call out logIn function from auth0.js
+      console.log( 'in logIn' );
+      lock.show( function( err, profile, token ) {
+        if (err) {
+          console.error( "auth error: ", err);
+        } // end error
+        else {
+          // save token to localStorage
+          localStorage.setItem( 'userToken', token );
+          console.log( 'token:', token );
+          // save user profile to localStorage
+          localStorage.setItem( 'userProfile', JSON.stringify( profile ) );
+          console.log( 'profile:', profile );
+        } // end no error
+      }); //end lock.show
+    }; // end scope.logIn
 
 }]); // end controller
 
