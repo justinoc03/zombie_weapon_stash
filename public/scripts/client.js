@@ -11,26 +11,43 @@ var myApp = angular.module('myApp',['ngRoute']);
 
 myApp.controller('zombieController',['$scope','$http',function($scope,$http){
 
+  $scope.init = function(){
+    console.log( 'in init' );
+    // check if a user's info is saved in localStorage
+    if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
+      // if so, save userProfile as $scope.userProfile
+      $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
+      console.log( 'loggedIn:', $scope.userProfile );
+      $scope.showUser = true;
+    }
+    else{
+      // if not, make sure we are logged out and empty
+      emptyLocalStorage();
+      $scope.showUser = false;
+    }
+  }; // end init function
+
   //auth0 login
   $scope.logIn = function(){
-      // call out logIn function from auth0.js
-      console.log( 'in logIn' );
-      lock.show( function( err, profile, token ) {
-        if (err) {
-          console.error( "auth error: ", err);
-        } // end error
-        else {
-          // save token to localStorage
-          localStorage.setItem( 'userToken', token );
-          console.log( 'token:', token );
-          // save user profile to localStorage
-          localStorage.setItem( 'userProfile', JSON.stringify( profile ) );
-          console.log( 'profile:', profile );
-        } // end no error
-      }); //end lock.show
-    }; // end scope.logIn
+    // call out logIn function from auth0.js
+    console.log( 'in logIn' );
+    lock.show( function( err, profile, token ) {
+      if (err) {
+        console.error( "auth error: ", err);
+      } // end error
+      else {
+        // save token to localStorage
+        localStorage.setItem( 'userToken', token );
+        // save user profile to localStorage
+        localStorage.setItem( 'userProfile', JSON.stringify( profile ) );
+        // reload page because dirtyhaxorz
+        location.reload();
+      } // end no error
+    }); //end lock.show
+  }; // end scope.logIn
 
     $scope.logOut = function(){
+      console.log('in logout');
   // call our logOutUrl
   $http({
     method:'GET',
@@ -39,13 +56,22 @@ myApp.controller('zombieController',['$scope','$http',function($scope,$http){
     // if logged out OK
     if( data.data == 'OK' ){
       // empty localStorage
-      // emptyLocalStorage();
+      emptyLocalStorage();
       $scope.showUser = false;
     }
+    console.log('GOODBYE', $scope.userProfile.given_name + " " + $scope.userProfile.family_name );
   });
-}; // end scope.logIn
+}; // end scope.logOut
+
+  // run init on controller load
+  $scope.init();
 
 }]); // end zombieController
+
+var emptyLocalStorage = function(){
+  localStorage.removeItem( 'userProfile' );
+  localStorage.removeItem( 'userToken' );
+}; // end emptyLocalStorage
 
 
 //config method doesnt take a name, we are just configuring myApp,
