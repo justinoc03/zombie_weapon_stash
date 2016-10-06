@@ -30,7 +30,22 @@ myApp.controller('zombieController',['$scope','$http',function($scope,$http){
       }); //end lock.show
     }; // end scope.logIn
 
-}]); // end controller
+    $scope.logOut = function(){
+  // call our logOutUrl
+  $http({
+    method:'GET',
+    url: logOutUrl,
+  }).then( function( data ){
+    // if logged out OK
+    if( data.data == 'OK' ){
+      // empty localStorage
+      // emptyLocalStorage();
+      $scope.showUser = false;
+    }
+  });
+}; // end scope.logIn
+
+}]); // end zombieController
 
 
 //config method doesnt take a name, we are just configuring myApp,
