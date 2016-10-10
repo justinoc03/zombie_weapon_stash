@@ -1,5 +1,15 @@
-myApp.controller("addItemController", ['$scope', '$http' ,function($scope, $http){
+myApp.controller("addItemController", ['$scope', '$http', 'fileUpload', function($scope, $http, fileUpload){
   console.log('In addItemController');
+
+
+  ////////////////////////////////////File Uploader/////////////////////////////////////////
+  $scope.uploadFile = function(){
+      var file = $scope.myFile;
+      console.log('file is ' );
+      console.dir(file);
+      var uploadUrl = "/fileUpload";
+      fileUpload.uploadFileToUrl(file, uploadUrl);
+  };
 
   ////////////////////////////////////Camera App/////////////////////////////////////////
   //this camera app comes from a free to use tutorial here: http://tutorialzine.com/2016/07/take-a-selfie-with-js/
@@ -170,7 +180,7 @@ myApp.controller("addItemController", ['$scope', '$http' ,function($scope, $http
               error_message.classList.remove("visible");
           }
     };
-  /////////////////////////////Camera App End//////////////////////////////////////////
+
 
   /////////////////////////////Add New Item//////////////////////////////////////////
     $scope.addItem = function(){
