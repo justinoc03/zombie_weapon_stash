@@ -8,15 +8,15 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
       console.log('file is ', file );
       console.dir(file);
       // ileUpload.uploadFileToUrl(file, uploadUrl);
-      var objectToSend={
-        image: file
-      };
+      // var objectToSend={
+      //   image: file
+      // };
 
       $http({
         url: 'https://api.imgur.com/3/image',
         method: 'POST',
         headers: {Authorization: 'Client-ID 3ed9fd5c8fff37e'},
-        data: objectToSend,
+        data: file,
         dataType: 'JSON'
       }).then(function(responseInfo){
           console.log('success from Imgur:', responseInfo);
