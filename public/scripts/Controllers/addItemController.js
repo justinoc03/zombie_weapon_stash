@@ -1,7 +1,7 @@
 myApp.controller("addItemController", ['$scope', '$http', function($scope, $http){
   console.log('In addItemController');
 
-  var imgurData;
+  var imgurData = {};
 
   ////////////////////////////////////File Uploader/////////////////////////////////////////
   $scope.uploadFile = function(){
@@ -28,7 +28,8 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
       item_name: $scope.item_name,
       description: $scope.description,
       rating_damage: $scope.rating_damage,
-      imgur_url: imgurData.data.data.link
+      imgur_url: imgurData.data.data.link,
+      logged_in_user: loggedInUser.nickname
     };
     console.log('itemToDB:', itemToDB);
 

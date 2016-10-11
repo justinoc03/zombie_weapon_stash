@@ -1,4 +1,5 @@
 console.log('js is sourced');
+var loggedInUser = {};
 
 //auth0 lock and logoutURL
 var lock = new Auth0Lock( '8V3jER1xj9RjCa6sH0U55nHHVdMryyLT', 'oconnorjustin.auth0.com');
@@ -38,6 +39,9 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
       $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
       console.log( 'loggedIn:', $scope.userProfile );
       $scope.showUser = true;
+
+      loggedInUser = $scope.userProfile;
+      console.log('loggedInUser:', loggedInUser);
     }
     else{
       // if not, make sure we are logged out and empty
