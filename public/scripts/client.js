@@ -37,7 +37,6 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
     if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
       // if so, save userProfile as $scope.userProfile
       $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
-      console.log( 'loggedIn:', $scope.userProfile );
       $scope.showUser = true;
 
       loggedInUser = $scope.userProfile;

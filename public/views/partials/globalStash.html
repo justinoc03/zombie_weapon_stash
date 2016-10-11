@@ -3,7 +3,7 @@
   <div ng-init="getItems()">
     <div ng-repeat="x in allItemsInStash">
 
-    <img ng-src="{{x.imgur_url}}"/>
+    <img id="stashImages" ng-src="{{x.imgur_url}}"/>
     <h4>Weapon Name: {{x.item_name}}</h4>
     <h5>Weapon Description: {{x.description}}</h5>
     <h5>Damage Rating: {{x.rating_damage}}</h5>

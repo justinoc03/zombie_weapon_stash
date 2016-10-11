@@ -19,7 +19,7 @@ h3{
     text-align: center;
 }
 
-img {
+#stashImages {
   height: 150px;
   border-radius: 20px;
   border: solid 1px red;
