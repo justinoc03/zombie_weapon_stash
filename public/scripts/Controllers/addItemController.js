@@ -5,12 +5,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
   ////////////////////////////////////File Uploader/////////////////////////////////////////
   $scope.uploadFile = function(){
       var file = $scope.myFile;
-      console.log('file is ', file );
       console.dir(file);
-      // ileUpload.uploadFileToUrl(file, uploadUrl);
-      // var objectToSend={
-      //   image: file
-      // };
 
       $http({
         url: 'https://api.imgur.com/3/image',

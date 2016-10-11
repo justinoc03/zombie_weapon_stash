@@ -9,7 +9,7 @@ var logOutUrl = 'https://oconnorjustin.auth0.com/v2/logout';
 //angular-route is dependent on having angular already installed
 var myApp = angular.module('myApp',['ngRoute']);
 
-/////////////////////directive/////////////////
+/////////////////////upload directive/////////////////
 myApp.directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
@@ -25,11 +25,6 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
         }
     };
 }]);
-
-/////////////////////service upload/////////////////
-
-
-
 
 
 
