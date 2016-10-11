@@ -19,6 +19,13 @@ h3{
     text-align: center;
 }
 
+img {
+  height: 150px;
+  border-radius: 20px;
+  border: solid 1px red;
+}
+
+
 
 .container{
     max-width: 1000px;
@@ -175,4 +182,3 @@ h3{
         font-size: 18px;
     }
 }
-

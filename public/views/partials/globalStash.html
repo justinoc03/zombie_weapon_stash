@@ -3,9 +3,11 @@
   <div ng-init="getItems()">
     <div ng-repeat="x in allItemsInStash">
 
-    <h4>Zombie Weapon Name: {{x.item_name}}</h4>
-    <h5>Zombie Weapon Description: {{x.description}}</h5>
+    <img ng-src="{{x.imgur_url}}"/>
+    <h4>Weapon Name: {{x.item_name}}</h4>
+    <h5>Weapon Description: {{x.description}}</h5>
     <h5>Damage Rating: {{x.rating_damage}}</h5>
+    <h6>Added by Survivor: {{x.user_nickname}}</h6>
 
     <hr>
 
