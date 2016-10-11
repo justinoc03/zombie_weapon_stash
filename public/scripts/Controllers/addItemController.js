@@ -37,7 +37,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
             $scope.addItemToDB();
           });
         } else if(file !== undefined && picFromCam !== undefined){
-          alert('Delete picture or select choose photo and press "cancel" to clear uploader ')
+          alert('Delete picture or select choose photo and press "cancel" to clear uploader ');
       }else {
           alert('Please take picture or upload an image...');
           return false;
