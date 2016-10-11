@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 // require zombWeaponModel mongodb
 var zombWeaponModel = require('./models/zombWeaponModel.js');
 
+// require zombWeaponModel mongodb
+var usersModel = require('./models/usersModel.js');
+
 // connect to the db with db name = zwsDB
 mongoose.connect('mongodb://localhost:27017/zwsDB');
 

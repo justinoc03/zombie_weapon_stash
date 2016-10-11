@@ -1,16 +1,18 @@
 console.log('js is sourced');
 var loggedInUser = {};
 
-//auth0 lock and logoutURL
+////////////////auth0 lock and logoutURL config/////////////////////
 var lock = new Auth0Lock( '8V3jER1xj9RjCa6sH0U55nHHVdMryyLT', 'oconnorjustin.auth0.com');
 // log out url, from Auth0
 var logOutUrl = 'https://oconnorjustin.auth0.com/v2/logout';
 
+//////////////////////////angular///////////////////////////////
 //must bring in the angular-route via $ngRoute
 //angular-route is dependent on having angular already installed
 var myApp = angular.module('myApp',['ngRoute']);
 
-/////////////////////upload directive/////////////////
+
+/////////////////////photo upload directive/////////////////
 myApp.directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
@@ -28,9 +30,10 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 }]);
 
 
-
+////////////////////////////////////////main zombieController///////////////////////////////////////////////
 myApp.controller('zombieController',['$scope','$http', function($scope, $http){
 
+  ////////////////auth0 lock//////////////////////
   $scope.lock = function(){
     console.log( 'in init' );
     // check if a user's info is saved in localStorage
@@ -40,7 +43,6 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
       $scope.showUser = true;
 
       loggedInUser = $scope.userProfile;
-      console.log('loggedInUser:', loggedInUser);
     }
     else{
       // if not, make sure we are logged out and empty
@@ -71,20 +73,21 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
     }); //end lock.show
   }; // end scope.logIn
 
-    $scope.logOut = function(){
-      console.log('in logout');
-  // call our logOutUrl
-  $http({
-    method:'GET',
-    url: logOutUrl,
-  }).then( function( data ){
-    // if logged out OK
-    if( data.data == 'OK' ){
-      // empty localStorage
-      emptyLocalStorage();
-      $scope.showUser = false;
-    }
-    console.log('GOODBYE', $scope.userProfile.given_name + " " + $scope.userProfile.family_name );
+  //auth0 logout
+  $scope.logOut = function(){
+    console.log('in logout');
+    // call our logOutUrl
+    $http({
+      method:'GET',
+      url: logOutUrl,
+    }).then( function( data ){
+      // if logged out OK
+      if( data.data == 'OK' ){
+        // empty localStorage
+        emptyLocalStorage();
+        $scope.showUser = false;
+      }
+      console.log('GOODBYE', $scope.userProfile.given_name + " " + $scope.userProfile.family_name );
   });
 }; // end scope.logOut
 
@@ -95,7 +98,7 @@ var emptyLocalStorage = function(){
   localStorage.removeItem( 'userToken' );
 }; // end emptyLocalStorage
 
-
+///////////////////////////Angular Routing///////////////////////////////////////
 //config method doesnt take a name, we are just configuring myApp,
 //It does take in a dependency injection array
 myApp.config(['$routeProvider', function($routeProvider){
