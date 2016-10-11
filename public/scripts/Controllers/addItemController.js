@@ -19,7 +19,6 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
 
   };
 
-
   ////////////////////////////////////Camera App/////////////////////////////////////////
   //this camera app comes from a free to use tutorial here: http://tutorialzine.com/2016/07/take-a-selfie-with-js/
     $scope.init = function(){
