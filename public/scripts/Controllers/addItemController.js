@@ -5,6 +5,8 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
 
   ////////////////////////////////////File Uploader/////////////////////////////////////////
   $scope.uploadFile = function(){
+      
+
       var file = $scope.myFile;
       console.dir(file);
 
