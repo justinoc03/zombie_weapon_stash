@@ -31,7 +31,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 
 myApp.controller('zombieController',['$scope','$http', function($scope, $http){
 
-  $scope.init = function(){
+  $scope.lock = function(){
     console.log( 'in init' );
     // check if a user's info is saved in localStorage
     if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
@@ -47,7 +47,10 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
       emptyLocalStorage();
       $scope.showUser = false;
     }
-  }; // end init function
+  }; // end $scope.lock function
+
+  // run $scope.lock on app/controller load
+  $scope.lock();
 
   //auth0 login
   $scope.logIn = function(){
@@ -84,9 +87,6 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
     console.log('GOODBYE', $scope.userProfile.given_name + " " + $scope.userProfile.family_name );
   });
 }; // end scope.logOut
-
-  // run init on controller load
-  $scope.init();
 
 }]); // end zombieController
 
