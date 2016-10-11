@@ -56,6 +56,8 @@ app.post('/addItem', function(req, res){
     item_name: itemFromUser.item_name,
     description: itemFromUser.description,
     rating_damage: itemFromUser.rating_damage,
+    imgur_url: itemFromUser.imgur_url,
+    user_nickname: itemFromUser.user_nickname
   }); // end newItem
 
   // save newItem

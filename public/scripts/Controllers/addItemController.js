@@ -20,35 +20,38 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
 
           $scope.addItemToDB();
         });
-
   };
 
+  /////////////////////////////Add New Item//////////////////////////////////////////
   $scope.addItemToDB = function(){
     var itemToDB = {
       item_name: $scope.item_name,
       description: $scope.description,
       rating_damage: $scope.rating_damage,
       imgur_url: imgurData.data.data.link,
-      logged_in_user: loggedInUser.nickname
+      user_nickname: loggedInUser.nickname
     };
     console.log('itemToDB:', itemToDB);
 
     //reset inputs after adding a new item
+    $scope.my_file = null;
     $scope.item_name = null;
     $scope.description = null;
     $scope.rating_damage = null;
 
+    //send data to mongoDB
+    $http({
+      method: 'POST',
+      url: '/addItem',
+      data: itemToDB
+    }).then(function(zwsResponse){
+      console.log('success from server/MongoDB', zwsResponse);
+    });//end HTTP call to mongoDB
+
   };//end addItemToDB
 
 
-  //   $http({
-  //     method: 'POST',
-  //     url: '/addItem',
-  //     data: itemToSend
-  //   }).then(function(response){
-  //     console.log('success from server/MongoDB', response);
-  //   });
-  // };
+
 
   ////////////////////////////////////Camera App/////////////////////////////////////////
   //this camera app comes from a free to use tutorial here: http://tutorialzine.com/2016/07/take-a-selfie-with-js/
@@ -221,7 +224,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
     };
 
 
-  /////////////////////////////Add New Item//////////////////////////////////////////
+  /////////////////////////////Add New Item (old)//////////////////////////////////////////
     $scope.addItem = function(){
       console.log( 'in addItem function');
 
@@ -254,7 +257,6 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
       });
 
     }; // end addItem function
-  /////////////////////////////Add New Item End//////////////////////////////////////////
 
 
 }]);
