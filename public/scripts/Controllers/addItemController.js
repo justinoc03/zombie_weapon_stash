@@ -1,15 +1,29 @@
-myApp.controller("addItemController", ['$scope', '$http', 'fileUpload', function($scope, $http, fileUpload){
+myApp.controller("addItemController", ['$scope', '$http', function($scope, $http){
   console.log('In addItemController');
 
 
   ////////////////////////////////////File Uploader/////////////////////////////////////////
   $scope.uploadFile = function(){
       var file = $scope.myFile;
-      console.log('file is ' );
+      console.log('file is ', file );
       console.dir(file);
-      var uploadUrl = "/fileUpload";
-      fileUpload.uploadFileToUrl(file, uploadUrl);
+      // ileUpload.uploadFileToUrl(file, uploadUrl);
+      var objectToSend={
+        image: file
+      };
+
+      $http({
+        url: 'https://api.imgur.com/3/image',
+        method: 'POST',
+        headers: {Authorization: 'Client-ID 3ed9fd5c8fff37e'},
+        data: objectToSend,
+        dataType: 'JSON'
+      }).then(function(responseInfo){
+          console.log('success from Imgur:', responseInfo);
+        });
+
   };
+
 
   ////////////////////////////////////Camera App/////////////////////////////////////////
   //this camera app comes from a free to use tutorial here: http://tutorialzine.com/2016/07/take-a-selfie-with-js/
