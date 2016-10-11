@@ -1,6 +1,7 @@
 myApp.controller("addItemController", ['$scope', '$http', function($scope, $http){
   console.log('In addItemController');
 
+  var imgurData;
 
   ////////////////////////////////////File Uploader/////////////////////////////////////////
   $scope.uploadFile = function(){
@@ -13,11 +14,40 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
         headers: {Authorization: 'Client-ID 3ed9fd5c8fff37e'},
         data: file,
         dataType: 'JSON'
-      }).then(function(responseInfo){
-          console.log('success from Imgur:', responseInfo);
+      }).then(function(imgurResponse){
+          console.log('success from Imgur:', imgurResponse);
+          imgurData = imgurResponse;
+
+          $scope.addItemToDB();
         });
 
   };
+
+  $scope.addItemToDB = function(){
+    var itemToDB = {
+      item_name: $scope.item_name,
+      description: $scope.description,
+      rating_damage: $scope.rating_damage,
+      imgur_url: imgurData.data.data.link
+    };
+    console.log('itemToDB:', itemToDB);
+
+    //reset inputs after adding a new item
+    $scope.item_name = null;
+    $scope.description = null;
+    $scope.rating_damage = null;
+
+  };//end addItemToDB
+
+
+  //   $http({
+  //     method: 'POST',
+  //     url: '/addItem',
+  //     data: itemToSend
+  //   }).then(function(response){
+  //     console.log('success from server/MongoDB', response);
+  //   });
+  // };
 
   ////////////////////////////////////Camera App/////////////////////////////////////////
   //this camera app comes from a free to use tutorial here: http://tutorialzine.com/2016/07/take-a-selfie-with-js/
@@ -219,7 +249,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
         url: '/addItem',
         data: itemToSend
       }).then(function(response){
-        console.log('this is from the server', response);
+        console.log('success from server/MongoDB', response);
       });
 
     }; // end addItem function
