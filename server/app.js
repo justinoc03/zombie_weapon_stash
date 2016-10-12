@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 // require zombWeaponModel mongodb
 var zombWeaponModel = require('./models/zombWeaponModel.js');
 
-// require zombWeaponModel mongodb
+// require usersModel for mongodb
 var usersModel = require('./models/usersModel.js');
 
 // connect to the db with db name = zwsDB
@@ -45,6 +45,32 @@ app.get('/getItems', function(req, res){
     }
   });
 });
+
+///////////////////////////Add/check users in DB////////////////////////////////////////
+app.post('/addUser', function(req, res){
+  var loggedUser = req.body;
+  console.log(loggedUser);
+
+  //create new User
+  var newUser = new usersModel({
+    first_name: loggedUser.first_name,
+    last_name: loggedUser.last_name,
+    nickname: loggedUser.nickname,
+    email: loggedUser.email,
+    user_role: 1,
+  });
+  // save user
+  newUser.save(function(err){
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('newUser added to DB');
+      res.sendStatus(201);
+      }
+    }); // end addUser
+  }); // end post
+
 
 
 ///////////////////////////Add Item to DB - Post Route////////////////////////////////////////

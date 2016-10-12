@@ -43,22 +43,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
           return false;
       }
 
-
-
-      // $http({
-      //   url: 'https://api.imgur.com/3/image',
-      //   method: 'POST',
-      //   headers: {Authorization: 'Client-ID 3ed9fd5c8fff37e'},
-      //   data: picFromCam,
-      //   dataType: 'JSON'
-      // }).then(function(imgurResponse){
-      //     console.log('success from Imgur:', imgurResponse);
-      //     imgurData = imgurResponse;
-      //
-      //     $scope.addItemToDB();
-      //   });
-      // }
-  };
+  };//end of file uploader
 
   /////////////////////////////Add New Item//////////////////////////////////////////
   $scope.addItemToDB = function(){

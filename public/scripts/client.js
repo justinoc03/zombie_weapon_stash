@@ -35,7 +35,7 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
 
   ////////////////auth0 lock//////////////////////
   $scope.lock = function(){
-    console.log( 'in init' );
+    console.log( 'in lock' );
     // check if a user's info is saved in localStorage
     if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
       // if so, save userProfile as $scope.userProfile
@@ -43,6 +43,7 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
       $scope.showUser = true;
 
       loggedInUser = $scope.userProfile;
+      console.log('loggedInUser:', loggedInUser);
     }
     else{
       // if not, make sure we are logged out and empty
