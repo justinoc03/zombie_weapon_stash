@@ -31,7 +31,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 
 
 ////////////////////////////////////////main zombieController///////////////////////////////////////////////
-myApp.controller('zombieController',['$scope','$http', function($scope, $http){
+myApp.controller('zombieController',['$scope','$http', '$location', function($scope, $http, $location){
 
   ////////////////auth0 lock//////////////////////
   $scope.lock = function(){
@@ -90,6 +90,7 @@ myApp.controller('zombieController',['$scope','$http', function($scope, $http){
       }
       console.log('GOODBYE', $scope.userProfile.given_name + " " + $scope.userProfile.family_name );
   });
+  $location.path('/globalStash');
 }; // end scope.logOut
 
 }]); // end zombieController
