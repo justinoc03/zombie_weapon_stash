@@ -23,7 +23,7 @@ myApp.controller("homeController", ['$scope', '$http' ,function($scope, $http){
     //send data to mongoDB
     $http({
       method: 'POST',
-      url: '/addUser',
+      url: '/checkUser',
       data: userToDB
     }).then(function(zwsUserResponse){
       console.log('success from server/MongoDB (users)', zwsUserResponse);

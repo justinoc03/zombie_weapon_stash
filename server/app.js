@@ -46,32 +46,25 @@ app.get('/getItems', function(req, res){
   });
 });
 
-///////////////////////////Add/check users in DB////////////////////////////////////////
-app.post('/addUser', function(req, res){
-  var loggedUser = req.body;
-  console.log(loggedUser);
-
-  //create new User
-  var newUser = new usersModel({
-    first_name: loggedUser.first_name,
-    last_name: loggedUser.last_name,
-    nickname: loggedUser.nickname,
-    email: loggedUser.email,
-    user_role: 1,
-  });
-  // save user
-  newUser.save(function(err){
+///////////////////////////Check/Add users in DB////////////////////////////////////////
+//Checks if user already exists in DB and if no email exists, the upsert feature will add the object into the DB automatically (NO IF ELSE STATEMENT NEEDED)
+app.post('/checkUser', function(req, res){
+  var userCheck = req.body;
+  console.log('in checkUser:', userCheck);
+  usersModel.update(
+    {email: userCheck.email},
+    {$setOnInsert: userCheck},
+    {upsert: true},
+    function(err, userResults){
     if(err){
-      console.log(err);
+      console.log('error occurred', err);
       res.sendStatus(500);
-    } else {
-      console.log('newUser added to DB');
-      res.sendStatus(201);
-      }
-    }); // end addUser
-  }); // end post
-
-
+    } else{
+      console.log('userResults:', userResults);
+      res.send(userResults);
+    }
+  });
+});
 
 ///////////////////////////Add Item to DB - Post Route////////////////////////////////////////
 app.post('/addItem', function(req, res){
