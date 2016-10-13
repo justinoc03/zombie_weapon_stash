@@ -61,10 +61,13 @@ myApp.run(function($rootScope, $http, $location)
           $location.path('/home');
         } else if (userRole === 1){
           console.log('in userRole = 1');
-          $location.path('/homeli');
+          // console.log($location.path());
+          if($location.path() === '/home'){
+            console.log('second tier');
+            $location.path('/homeli');
+          }
         } else {
           console.log('in userRole = 2 or other');
-          $location.path('/globalStash');
         }
       };
     });//end $rootScope
@@ -90,6 +93,22 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 
 ////////////////////////////////////////main zombieController///////////////////////////////////////////////
 myApp.controller('zombieController',['$scope','$http', '$location', '$window', function($scope, $http, $location, $window){
+
+  ////////////////Daytime Greeting//////////////////////
+  var date = new Date();
+  var timeNow = date.getHours();
+  if( timeNow >= 4 && timeNow <= 11){
+    $scope.timeOfDay = "Morning";
+  }
+  else if( timeNow >= 12 && timeNow <= 17 ){
+    $scope.timeOfDay = "Afternoon";
+  }
+  else if( timeNow >= 18 && timeNow <= 23 ){
+    $scope.timeOfDay = "Evening";
+  }
+  else{
+    $scope.timeOfDay = "Undead of night";
+  }
 
   ////////////////auth0 lock//////////////////////
   $scope.lock = function(){
@@ -156,6 +175,7 @@ myApp.controller('zombieController',['$scope','$http', '$location', '$window', f
 
 
 }]); // end zombieController
+
 
 var emptyLocalStorage = function(){
   localStorage.removeItem( 'userProfile' );
