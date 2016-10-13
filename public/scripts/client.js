@@ -14,11 +14,10 @@ var myApp = angular.module('myApp',['ngRoute']);
 
 //////////////////Verify User on routing and Give Access based on User Role///////////////////////
 //RUNS IN ALL ROUTES/REFRESHING
-myApp.run(function($rootScope, $http)
+myApp.run(function($rootScope, $http, $location)
   {$rootScope.$on("$locationChangeStart", function(event, next, current) {
       console.log('in myApp.run');
 
-  /////////////////////////////Check/Add New User//////////////////////////////////////////
       var checkUser = function(){
         console.log('in newUser');
         var userToDB = {
@@ -29,19 +28,11 @@ myApp.run(function($rootScope, $http)
           user_role: 1,
         };
 
-        console.log('userToDB:', userToDB);
-
         if(userToDB.email === 'justin.oc03@gmail.com'){
           userToDB.user_role = 2;
         }
 
         console.log('userToDB after if statement:', userToDB);
-
-        //reset inputs after adding a new item
-        // $scope.my_file = "";
-        // $scope.item_name = null;
-        // $scope.description = null;
-        // $scope.rating_damage = null;
 
         //send data to mongoDB
         $http({
@@ -67,19 +58,17 @@ myApp.run(function($rootScope, $http)
         console.log('userRole:', userRole);
         if(userRole === 0){
           console.log('in userRole = 0');
-          // $location.path('/globalStash');
+          $location.path('/home');
         } else if (userRole === 1){
           console.log('in userRole = 1');
-          // $location.path('/homeli');
+          $location.path('/homeli');
         } else {
           console.log('in userRole = 2 or other');
-          // $location.path('/addItem');
+          $location.path('/globalStash');
         }
       };
-
-
-    });
-});
+    });//end $rootScope
+});//end checkUser on angular routing
 
 /////////////////////photo upload directive/////////////////
 myApp.directive('fileModel', ['$parse', function ($parse) {
@@ -138,7 +127,6 @@ myApp.controller('zombieController',['$scope','$http', '$location', '$window', f
         // save user profile to localStorage
         localStorage.setItem( 'userProfile', JSON.stringify( profile ) );
         // reload page because dirtyhaxorz
-        $window.location.href = "/#/homeli";
         location.reload();
       } // end no error
     }); //end lock.show
@@ -162,9 +150,8 @@ myApp.controller('zombieController',['$scope','$http', '$location', '$window', f
       userRole = 0;
       loggedInUser = {};
       console.log('log out userRole', userRole);
+      location.reload();
     });
-  $location.path('/home');
-  // location.reload();
   }; // end scope.logOut
 
 
