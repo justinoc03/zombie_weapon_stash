@@ -1,5 +1,6 @@
 console.log('js is sourced');
 var loggedInUser = {};
+var userRole = 0;
 
 ////////////////auth0 lock and logoutURL config/////////////////////
 var lock = new Auth0Lock( '8V3jER1xj9RjCa6sH0U55nHHVdMryyLT', 'oconnorjustin.auth0.com');
@@ -11,6 +12,74 @@ var logOutUrl = 'https://oconnorjustin.auth0.com/v2/logout';
 //angular-route is dependent on having angular already installed
 var myApp = angular.module('myApp',['ngRoute']);
 
+//////////////////Verify User on routing and Give Access based on User Role///////////////////////
+//RUNS IN ALL ROUTES/REFRESHING
+myApp.run(function($rootScope, $http)
+  {$rootScope.$on("$locationChangeStart", function(event, next, current) {
+      console.log('in myApp.run');
+
+  /////////////////////////////Check/Add New User//////////////////////////////////////////
+      var checkUser = function(){
+        console.log('in newUser');
+        var userToDB = {
+          first_name: loggedInUser.given_name,
+          last_name: loggedInUser.family_name,
+          nickname: loggedInUser.nickname,
+          email: loggedInUser.email,
+          user_role: 1,
+        };
+
+        console.log('userToDB:', userToDB);
+
+        if(userToDB.email === 'justin.oc03@gmail.com'){
+          userToDB.user_role = 2;
+        }
+
+        console.log('userToDB after if statement:', userToDB);
+
+        //reset inputs after adding a new item
+        // $scope.my_file = "";
+        // $scope.item_name = null;
+        // $scope.description = null;
+        // $scope.rating_damage = null;
+
+        //send data to mongoDB
+        $http({
+          method: 'POST',
+          url: '/checkUser',
+          data: userToDB
+        }).then(function(zwsUserResponse){
+          console.log('success from server/MongoDB (users)', zwsUserResponse);
+          if(zwsUserResponse.config.data.email === undefined){
+            userRole = 0;
+          } else{
+            userRole = zwsUserResponse.config.data.user_role;
+          }
+          console.log(userRole);
+          checkRole();
+        });//end HTTP call to mongoDB
+      };//end newUser
+
+      checkUser();
+
+      ///////////////////////Check Credentials///////////////////////
+      var checkRole = function(){
+        console.log('userRole:', userRole);
+        if(userRole === 0){
+          console.log('in userRole = 0');
+          // $location.path('/globalStash');
+        } else if (userRole === 1){
+          console.log('in userRole = 1');
+          // $location.path('/homeli');
+        } else {
+          console.log('in userRole = 2 or other');
+          // $location.path('/addItem');
+        }
+      };
+
+
+    });
+});
 
 /////////////////////photo upload directive/////////////////
 myApp.directive('fileModel', ['$parse', function ($parse) {
@@ -31,7 +100,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 
 
 ////////////////////////////////////////main zombieController///////////////////////////////////////////////
-myApp.controller('zombieController',['$scope','$http', '$location', function($scope, $http, $location){
+myApp.controller('zombieController',['$scope','$http', '$location', '$window', function($scope, $http, $location, $window){
 
   ////////////////auth0 lock//////////////////////
   $scope.lock = function(){
@@ -69,6 +138,7 @@ myApp.controller('zombieController',['$scope','$http', '$location', function($sc
         // save user profile to localStorage
         localStorage.setItem( 'userProfile', JSON.stringify( profile ) );
         // reload page because dirtyhaxorz
+        $window.location.href = "/#/homeli";
         location.reload();
       } // end no error
     }); //end lock.show
@@ -89,9 +159,14 @@ myApp.controller('zombieController',['$scope','$http', '$location', function($sc
         $scope.showUser = false;
       }
       console.log('GOODBYE', $scope.userProfile.given_name + " " + $scope.userProfile.family_name );
-  });
-  $location.path('/globalStash');
-}; // end scope.logOut
+      userRole = 0;
+      loggedInUser = {};
+      console.log('log out userRole', userRole);
+    });
+  $location.path('/home');
+  // location.reload();
+  }; // end scope.logOut
+
 
 }]); // end zombieController
 
