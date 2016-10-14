@@ -9,6 +9,7 @@
     <script src="https://cdn.auth0.com/js/lock-8.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+    <link rel="stylesheet" href="../vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="../styles/styles.css" media="screen" title="no title">
     <script src="../vendors/angular.min.js" charset="utf-8"></script>
     <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
@@ -45,7 +46,7 @@
 
     <ul>
       <li ng-hide='showUser'><a href="#home">LOG IN</a></li>
-      <li><a href="#globalStash">Global Stash</a></li>
+      <li ng-show='showUser'><a href="#globalStash">Global Stash</a></li>
       <li ng-show='showUser'><a href="#addItem">Add Item to Stash</a></li>
       <li ng-show='showUser'><a href="#homeli">Home Logged In</a></li>
     </ul>

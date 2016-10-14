@@ -3,6 +3,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
 
   var imgurData = {};
   var picFromCam;
+  var globalVideo = document.querySelector('#camera-stream');
 
   ////////////////////////////////////File Uploader/////////////////////////////////////////
   $scope.uploadFile = function(){
@@ -88,6 +89,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
             delete_photo_btn = document.querySelector('#delete-photo'),
             download_photo_btn = document.querySelector('#download-photo'),
             error_message = document.querySelector('#error-message');
+
 
 
         // The getUserMedia interface is used for handling camera input.
@@ -211,5 +213,13 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
             error_message.classList.remove("visible");
         }
   };//end camera init
+
+  //reload is a workaround to kill the camera app
+  $scope.$on("$routeChangeStart", function($currentRoute, $previousRoute) {
+      console.log('in routeChangeStart');
+      location.reload();
+
+
+  });
 
 }]);//end addItemController
