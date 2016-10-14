@@ -26,23 +26,29 @@
     <title>ZWS Index</title>
   </head>
 
+    <!--///////////////////////////////////BODY//////////////////////////////////////-->
+    <body ng-controller="zombieController">
+      <nav class="navbar navbar-default">
 
-  <body ng-controller="zombieController">
-    <div>
-      <h1>Zombie Weapon Stash</h1>
-    </div>
+    </nav>
 
-    <!-- auth0 login -->
-        <div ng-show='showUser'>
-          <p>
-            Good {{timeOfDay}}, {{ userProfile.given_name }}! <button ng-click='logOut()'>Log Out</button>
-          </p>
-        <!-- <img src="{{ userProfile.picture }}" /> -->
+
+        <div class="pull-right">
+          <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
+          <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
         </div>
-        <div ng-hide='showUser'>
-          Please <button ng-click='logIn()'>Log In</button>
-        </div>
-        <br>
+
+
+      <!-- auth0 login -->
+          <div ng-show='showUser'>
+            <p>
+              Good {{timeOfDay}}, {{ userProfile.given_name }}!
+            </p>
+          <!-- <img src="{{ userProfile.picture }}" /> -->
+          </div>
+
+          <br>
+
 
     <ul>
       <li ng-hide='showUser'><a href="#home">LOG IN</a></li>
