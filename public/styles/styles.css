@@ -21,11 +21,28 @@ h3{
 
 #stashImages {
   height: 150px;
-  border-radius: 20px;
-  border: solid 1px red;
+  border-radius: 10px;
+  border: solid 1px darkred;
+}
+
+#zombieHands{
+  background-color: black;
+  border-color: darkred;
+  border-radius: 0;
 }
 
 
+#greeting{
+  font-size: 15px;
+  text-align: center;
+  width: 200px;
+}
+
+#greetingWords{
+  text-align: center;
+  justify-content: center;
+
+}
 
 .container{
     max-width: 1000px;

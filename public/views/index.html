@@ -28,26 +28,22 @@
 
     <!--///////////////////////////////////BODY//////////////////////////////////////-->
     <body ng-controller="zombieController">
-      <nav class="navbar navbar-default">
 
-    </nav>
-
+        <nav id='zombieHands' class="navbar navbar-default"><img src="../images/zombie_handsv2.png"></nav>
 
         <div class="pull-right">
           <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
           <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
-        </div>
-
 
       <!-- auth0 login -->
-          <div ng-show='showUser'>
-            <p>
-              Good {{timeOfDay}}, {{ userProfile.given_name }}!
+          <div id="greeting"ng-show='showUser'>
+            <p id="greetingWords">
+              Good {{timeOfDay}}, {{ userProfile.given_name }}... <br>I see you're still ALIVE!
             </p>
           <!-- <img src="{{ userProfile.picture }}" /> -->
           </div>
-
           <br>
+        </div>
 
 
     <ul>
