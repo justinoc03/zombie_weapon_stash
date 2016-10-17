@@ -12,12 +12,8 @@ html{
     height: auto%;
 }
 
-head{
-  background-color: gray;
-}
-
 body{
-  background-color: gray;
+  background-color: black;
   height: auto%;
 }
 
@@ -38,7 +34,9 @@ h3{
   border: 0px solid gray;
   max-width: 80%;
   height: auto;
+  background-color: black;
 }
+
 
 #stashImages {
   height: 150px;
@@ -263,7 +261,6 @@ float:left;
   border-bottom: 3px solid black;
   max-width: 20%;
   height: 86.5%;
-  max-height: ;
 }
 
 #sidebarTitle{
@@ -271,8 +268,16 @@ margin-left: 23%;
 text-shadow: 1px 1px black;
 }
 
+#globalStash{
+  left: 23% ;
+  position: absolute;;
+  display: inline;
+  margin-top: 10px;
+}
+
 #everything{
   max-height: 650px;
+  background-color: black;
 }
 
 .list{

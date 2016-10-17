@@ -1,63 +1,97 @@
 <h2>This is the User Stash</h2>
 
-<!--////////////////////////////Camera App//////////////////////////////////-->
-<h3>Take a Picture or Upload an Image</h3>
-<h3>Picture Here</h3>
+<!--////////////////////////////Styling Start//////////////////////////////////-->
+<div ng-init="newUser()" id="everything">
+  <div id="walkingZombies" class="">
+    <img id="zombieImg" src="../images/walkingZombies.jpg"/>
 
-<!-- this init command starts the camera app on startup -->
-<div ng-init='init()' class="container">
+    <div id="loginButtons" class="">
+      <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
+      <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
 
-  <div class="app">
-
-    <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
-    <video id="camera-stream"></video>
-    <img id="snap">
-
-    <p id="error-message"></p>
-
-    <div class="controls">
-      <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
-      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
-      <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>
+  <!-- auth0 login -->
+      <div id="greeting"ng-show='showUser'>
+        <p id="greetingWords">
+          Good {{timeOfDay}}, {{ userProfile.given_name }}... <br>I see you're still <u>ALIVE</u>!
+        </p>
+      <!-- <img src="{{ userProfile.picture }}" /> -->
+      </div>
     </div>
 
-    <!-- Hidden canvas element. Used for taking snapshot of video. -->
-    <canvas></canvas>
+    <!--////////////////////////////Camera App//////////////////////////////////-->
+    <div>
+    <h3>Take a Picture or Upload an Image</h3>
+    <h3>Picture Here</h3>
+
+    <!-- this init command starts the camera app on startup -->
+    <div ng-init='init()' class="container">
+
+      <div class="app">
+
+        <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+        <video id="camera-stream"></video>
+        <img id="snap">
+
+        <p id="error-message"></p>
+
+        <div class="controls">
+          <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
+          <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+          <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>
+        </div>
+
+        <!-- Hidden canvas element. Used for taking snapshot of video. -->
+        <canvas></canvas>
+
+      </div>
+    </div>
+
+    <!--////////////////////////////File Uploader//////////////////////////////////-->
+    <h3>Upload Here</h3>
+    <div>
+        <input id="filePicker" type="file" file-model="myFile" ng-model="my_file"/>
+        <!-- <button ng-click="uploadFile()">upload me</button> -->
+    </div>
+
+    <!--//////////////////////////Add Item to Stash////////////////////////////-->
+    <div>
+
+            <h4>Add New Item to the Stash!</h4>
+            <form name="addZombItem">
+              <input type="text" name="nameInput" placeholder="Item Name*" ng-model="item_name">
+              <input type="text" name="descriptionInput" placeholder="Description*" ng-model="description">
+              <select name="damageInput" ng-model="rating_damage">
+                <option disabled selected>Damage Rating*</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <input type="submit" ng-click="uploadFile()" placeholder="Add Item"></input>
+            </form>
+
+
+    </div>
+
 
   </div>
-</div>
 
-<!--////////////////////////////File Uploader//////////////////////////////////-->
-<h3>Upload Here</h3>
-<div>
-    <input id="filePicker" type="file" file-model="myFile" ng-model="my_file"/>
-    <!-- <button ng-click="uploadFile()">upload me</button> -->
-</div>
-
-
-<!--//////////////////////////Add Item to Stash////////////////////////////-->
-<div>
-
-        <h4>Add New Item to the Stash!</h4>
-        <form name="addZombItem">
-          <input type="text" name="nameInput" placeholder="Item Name*" ng-model="item_name">
-          <input type="text" name="descriptionInput" placeholder="Description*" ng-model="description">
-          <select name="damageInput" ng-model="rating_damage">
-            <option disabled selected>Damage Rating*</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-          <input type="submit" ng-click="uploadFile()" placeholder="Add Item"></input>
-        </form>
-
-
+  <div id="sidebarNav" class="container">
+    <div class="row">
+      <h4 id="sidebarTitle">STAY ALIVE</h4>
+      <ul id="mainList">
+        <li class="list" class="col-md-1" ng-hide='showUser'><a href="#home">LOG IN</a></li>
+        <li class="list" class="col-md-1" ng-show='showUser'><a href="#globalStash">Global Stash</a></li>
+        <li class="list" class="col-md-1" ng-show='showUser'><a href="#addItem">Add Item to Stash</a></li>
+        <li class="list" class="col-md-1" ng-show='showUser'><a href="#homeli">Home Logged In</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
