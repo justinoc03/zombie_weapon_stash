@@ -295,6 +295,14 @@ text-shadow: 1px 1px black;
   margin-top: 10px;
 }
 
+#doYourWorst{
+  left: 25% ;
+  position: absolute;
+  display: inline;
+  margin-top: 10px;
+  width: 1200px;
+}
+
 #addItemSection{
   left: 25% ;
   position: absolute;;
