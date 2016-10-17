@@ -29,7 +29,13 @@
     <!--///////////////////////////////////BODY//////////////////////////////////////-->
     <body ng-controller="zombieController">
 
-        <nav id='zombieHands' class="navbar navbar-default"><img src="../images/zombie_handsv2.png"></nav>
+        <nav id='zombieHands' class="navbar navbar-default">
+          <img id='zombieHandsPic' src="../images/zombie_handsv2.png"/>
+          <img id="zwsTitle" src="../images/zwsTitle.png"/>
+          <img id="zwsLogo" src="../images/zwsLogov2.png"/>
+
+
+        </nav>
 
         <div class="pull-right">
           <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>

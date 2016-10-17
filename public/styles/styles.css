@@ -29,14 +29,29 @@ h3{
   background-color: black;
   border-color: darkred;
   border-radius: 0;
+  text-align: center;
 }
 
+#zombieHandsPic{
+float:left;
+}
+
+#zwsTitle{
+  display: inline-block;
+  margin-right: 15%;
+  margin-left: auto;
+}
+
+#zwsLogo{
+  float: right;
+}
 
 #greeting{
   font-size: 15px;
   text-align: center;
   width: 200px;
 }
+
 
 #greetingWords{
   text-align: center;
