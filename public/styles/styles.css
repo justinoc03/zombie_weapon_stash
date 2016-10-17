@@ -75,6 +75,26 @@ float:left;
   position:absolute;
 }
 
+#globalStashTitle{
+  right: 37%;
+  margin-top: 10px;
+  position: block;
+  max-width: 300px;
+  position: absolute;
+  font-size: 50px;
+  color: darkred;
+}
+
+#addItemTitle{
+  right: ;
+  margin-top: 10px;
+  position: inline-block;
+  max-width: ;
+  position: absolute;
+  font-size: 30px;
+  color: darkred;
+}
+
 #greeting{
   font-size: 17px;
   text-align: center;
@@ -270,20 +290,22 @@ text-shadow: 1px 1px black;
 
 #globalStash{
   left: 23% ;
-  position: absolute;;
+  position: absolute;
   display: inline;
   margin-top: 10px;
 }
 
 #addItemSection{
-  left: 27% ;
+  left: 25% ;
   position: absolute;;
   display: inline;
   margin-top: 0px;
+  color: darkred;
 }
 
 #uploadPhoto{
   margin-top: 150px;
+  color: darkred;
 }
 
 #addItemForm > * {

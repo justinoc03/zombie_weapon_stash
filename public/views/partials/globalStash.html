@@ -2,8 +2,9 @@
 <!-- right aligned items -->
   <div ng-init="newUser()" id="everything">
     <div id="walkingZombies" class="">
-      <img id="zombieImg" src="../images/walkingZombies.jpg"/>
 
+      <img id="zombieImg" src="../images/walkingZombies.jpg"/>
+      <h2 id="globalStashTitle">Global Stash</h2>
       <div id="loginButtons" class="">
         <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
         <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
@@ -20,6 +21,16 @@
       <div id='globalStash' ng-init="getItems()">
         <div ng-repeat="x in allItemsInStash">
 
+          <!-- <table ng-repeat="x in allItemsInStash" style="width:100%">
+            <tr>
+              <td><img id="stashImages" ng-src="{{x.imgur_url}}"/></td>
+              <td><h4>Weapon Name: {{x.item_name}}</h4></td>
+              <td>Weapon Description: {{x.description}}</td>
+              <td>Damage Rating: {{x.rating_damage}}</td>
+              <td>Added by Survivor: {{x.user_nickname}}</td>
+            </tr>
+          </table> -->
+          <br><br><br><br>
           <img id="stashImages" ng-src="{{x.imgur_url}}"/>
           <h4>Weapon Name: {{x.item_name}}</h4>
           <h5>Weapon Description: {{x.description}}</h5>
