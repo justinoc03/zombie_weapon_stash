@@ -30,6 +30,8 @@ h3{
   border-color: darkred;
   border-radius: 0;
   text-align: center;
+  margin-bottom: 0px;
+  border-bottom: 2px solid white;
 }
 
 #zombieHandsPic{
@@ -38,12 +40,17 @@ float:left;
 
 #zwsTitle{
   display: inline-block;
-  margin-right: 15%;
+  margin-right: 8%;
   margin-left: auto;
 }
 
 #zwsLogo{
   float: right;
+}
+
+#loginButtons{
+  float: right;
+  margin-top: 10px;
 }
 
 #greeting{
@@ -52,11 +59,9 @@ float:left;
   width: 200px;
 }
 
-
 #greetingWords{
   text-align: center;
   justify-content: center;
-
 }
 
 .container{
@@ -213,4 +218,27 @@ float:left;
     .app .controls #take-photo i{
         font-size: 18px;
     }
+}
+
+#sidebarNav{
+  width: 20%;
+  height: 800px;
+  float: left;
+  margin-top: 0px;
+  background-color: darkred;
+  font-size: 15px;
+  font-weight: bolder;
+  color: grey;
+}
+
+#sidebarTitle{
+margin-left: 23%;
+text-shadow: 1px 1px black;
+}
+
+.list{
+  list-style-type: none;
+  width: 200px;
+  margin-top: 10px;
+  margin-left: 35%;
 }

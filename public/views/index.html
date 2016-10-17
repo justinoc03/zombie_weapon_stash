@@ -33,11 +33,10 @@
           <img id='zombieHandsPic' src="../images/zombie_handsv2.png"/>
           <img id="zwsTitle" src="../images/zwsTitle.png"/>
           <img id="zwsLogo" src="../images/zwsLogov2.png"/>
-
-
         </nav>
 
-        <div class="pull-right">
+        <div class="">
+        <div id="loginButtons" class="pull-right">
           <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
           <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
 
@@ -48,16 +47,21 @@
             </p>
           <!-- <img src="{{ userProfile.picture }}" /> -->
           </div>
-          <br>
         </div>
 
+        <div id="sidebarNav" class="container">
+          <div class="row">
+            <h4 id="sidebarTitle">STAY ALIVE</h4>
+            <ul id="mainList">
+              <li class="list" class="col-md-1" ng-hide='showUser'><a href="#home">LOG IN</a></li>
+              <li class="list" class="col-md-1" ng-show='showUser'><a href="#globalStash">Global Stash</a></li>
+              <li class="list" class="col-md-1" ng-show='showUser'><a href="#addItem">Add Item to Stash</a></li>
+              <li class="list" class="col-md-1" ng-show='showUser'><a href="#homeli">Home Logged In</a></li>
+            </ul>
+          </div>
+        </div>
+        </div>
 
-    <ul>
-      <li ng-hide='showUser'><a href="#home">LOG IN</a></li>
-      <li ng-show='showUser'><a href="#globalStash">Global Stash</a></li>
-      <li ng-show='showUser'><a href="#addItem">Add Item to Stash</a></li>
-      <li ng-show='showUser'><a href="#homeli">Home Logged In</a></li>
-    </ul>
     <br>
 
     <main ng-view></main>
