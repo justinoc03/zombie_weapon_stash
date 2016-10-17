@@ -83,8 +83,9 @@ float:left;
 }
 
 #greeting{
-  font-size: 15px;
+  font-size: 17px;
   text-align: center;
+  color: red;
   width: 200px;
   float: right;
   position: absolute;
