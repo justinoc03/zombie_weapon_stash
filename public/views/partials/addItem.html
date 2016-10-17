@@ -14,7 +14,40 @@
         </p>
       <!-- <img src="{{ userProfile.picture }}" /> -->
       </div>
-    </div>
+
+      <!--////////////////////////////File Uploader//////////////////////////////////-->
+      <div id="uploadPhoto">
+        <h4>Upload Here</h4>
+        <div>
+            <input id="filePicker" type="file" file-model="myFile" ng-model="my_file"/>
+            <!-- <button ng-click="uploadFile()">upload me</button> -->
+        </div>
+
+        <!--//////////////////////////Add Item to Stash////////////////////////////-->
+        <div id="addItemDescription">
+                <h4>Add New Item to the Stash!</h4>
+                <form id="addItemForm" name="addZombItem">
+                  <input type="text" name="nameInput" placeholder="Item Name*" ng-model="item_name"><br>
+                  <input type="text" name="descriptionInput" placeholder="Description*" ng-model="description"><br>
+                  <select name="damageInput" ng-model="rating_damage">
+                    <option disabled selected>Damage Rating*</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select><br>
+                  <input type="submit" ng-click="uploadFile()" placeholder="Add Item"></input>
+                </form>
+        </div>
+      </div>
+    </div> <!-- end loginButtons sidebar -->
 
     <!--////////////////////////////Camera App//////////////////////////////////-->
     <div id="addItemSection">
@@ -42,38 +75,6 @@
           <canvas></canvas>
 
         </div>
-      </div>
-
-      <!--////////////////////////////File Uploader//////////////////////////////////-->
-      <h4>Upload Here</h4>
-      <div>
-          <input id="filePicker" type="file" file-model="myFile" ng-model="my_file"/>
-          <!-- <button ng-click="uploadFile()">upload me</button> -->
-      </div>
-
-      <!--//////////////////////////Add Item to Stash////////////////////////////-->
-      <div>
-
-              <h4>Add New Item to the Stash!</h4>
-              <form name="addZombItem">
-                <input type="text" name="nameInput" placeholder="Item Name*" ng-model="item_name">
-                <input type="text" name="descriptionInput" placeholder="Description*" ng-model="description">
-                <select name="damageInput" ng-model="rating_damage">
-                  <option disabled selected>Damage Rating*</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-                <input type="submit" ng-click="uploadFile()" placeholder="Add Item"></input>
-              </form>
       </div>
 
     </div> <!-- end right aligned items -->
