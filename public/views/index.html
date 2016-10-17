@@ -35,19 +35,24 @@
           <img id="zwsLogo" src="../images/zwsLogov2.png"/>
         </nav>
 
-        <div class="">
-        <div id="loginButtons" class="pull-right">
-          <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
-          <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
+        <div id="walkingZombies" class="container zombieImage">
 
-      <!-- auth0 login -->
-          <div id="greeting"ng-show='showUser'>
-            <p id="greetingWords">
-              Good {{timeOfDay}}, {{ userProfile.given_name }}... <br>I see you're still ALIVE!
-            </p>
-          <!-- <img src="{{ userProfile.picture }}" /> -->
+          <div id="loginButtons" class="pull-right">
+            <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
+            <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
+
+        <!-- auth0 login -->
+            <div id="greeting"ng-show='showUser'>
+              <p id="greetingWords">
+                Good {{timeOfDay}}, {{ userProfile.given_name }}... <br>I see you're still ALIVE!
+              </p>
+            <!-- <img src="{{ userProfile.picture }}" /> -->
+            </div>
           </div>
+
         </div>
+
+
 
         <div id="sidebarNav" class="container">
           <div class="row">
@@ -60,9 +65,7 @@
             </ul>
           </div>
         </div>
-        </div>
 
-    <br>
 
     <main ng-view></main>
   </body>
