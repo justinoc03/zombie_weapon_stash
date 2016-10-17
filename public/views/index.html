@@ -35,35 +35,34 @@
           <img id="zwsLogo" src="../images/zwsLogov2.png"/>
         </nav>
 
-        <div id="walkingZombies" class="">
-          <img id="zombieImg" src="../images/walkingZombies.jpg"/>
+        <div id="everything">
+          <div id="walkingZombies" class="">
+            <img id="zombieImg" src="../images/walkingZombies.jpg"/>
 
-          <div id="loginButtons" class="">
-            <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
-            <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
+            <div id="loginButtons" class="">
+              <button class="" ng-hide="showUser" ng-click='logIn()'><img src="../images/btn_google_signin_light_normal_web.png"></button>
+              <button class="" ng-show="showUser" ng-click='logOut()'><img src="../images/googleSignOut.png"></button>
 
-        <!-- auth0 login -->
-            <div id="greeting"ng-show='showUser'>
-              <p id="greetingWords">
-                Good {{timeOfDay}}, {{ userProfile.given_name }}... <br>I see you're still <u>ALIVE</u>!
-              </p>
-            <!-- <img src="{{ userProfile.picture }}" /> -->
+          <!-- auth0 login -->
+              <div id="greeting"ng-show='showUser'>
+                <p id="greetingWords">
+                  Good {{timeOfDay}}, {{ userProfile.given_name }}... <br>I see you're still <u>ALIVE</u>!
+                </p>
+              <!-- <img src="{{ userProfile.picture }}" /> -->
+              </div>
             </div>
           </div>
 
-        </div>
-
-
-
-        <div id="sidebarNav" class="container">
-          <div class="row">
-            <h4 id="sidebarTitle">STAY ALIVE</h4>
-            <ul id="mainList">
-              <li class="list" class="col-md-1" ng-hide='showUser'><a href="#home">LOG IN</a></li>
-              <li class="list" class="col-md-1" ng-show='showUser'><a href="#globalStash">Global Stash</a></li>
-              <li class="list" class="col-md-1" ng-show='showUser'><a href="#addItem">Add Item to Stash</a></li>
-              <li class="list" class="col-md-1" ng-show='showUser'><a href="#homeli">Home Logged In</a></li>
-            </ul>
+          <div id="sidebarNav" class="container">
+            <div class="row">
+              <h4 id="sidebarTitle">STAY ALIVE</h4>
+              <ul id="mainList">
+                <li class="list" class="col-md-1" ng-hide='showUser'><a href="#home">LOG IN</a></li>
+                <li class="list" class="col-md-1" ng-show='showUser'><a href="#globalStash">Global Stash</a></li>
+                <li class="list" class="col-md-1" ng-show='showUser'><a href="#addItem">Add Item to Stash</a></li>
+                <li class="list" class="col-md-1" ng-show='showUser'><a href="#homeli">Home Logged In</a></li>
+              </ul>
+            </div>
           </div>
         </div>
 
