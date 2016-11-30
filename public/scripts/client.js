@@ -34,7 +34,7 @@ myApp.run(function($rootScope, $http, $location)
 
         console.log('userToDB after if statement:', userToDB);
 
-        //send data to mongoDB
+        //send data to mongoDBa
         $http({
           method: 'POST',
           url: '/checkUser',

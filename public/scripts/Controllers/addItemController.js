@@ -21,6 +21,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
         }).then(function(imgurResponse){
             console.log('success from Imgur:', imgurResponse);
             imgurData = imgurResponse;
+            alert('Good searching, survivor, Item has been Uploaded!');
 
             $scope.addItemToDB();
           });
@@ -34,6 +35,7 @@ myApp.controller("addItemController", ['$scope', '$http', function($scope, $http
         }).then(function(imgurResponse){
             console.log('success from Imgur:', imgurResponse);
             imgurData = imgurResponse;
+            alert('Good searching, survivor, Item has been Uploaded!');
 
             $scope.addItemToDB();
           });
