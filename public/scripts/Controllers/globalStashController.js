@@ -14,7 +14,7 @@ myApp.controller("globalStashController", ["$scope", "$http", function($scope, $
     }, function error(errorObject){
       console.log(errorObject);
     });
-    console.log($scope.allItemsInStash);
-  };  
+    // console.log($scope.allItemsInStash);
+  };
 
 }]);

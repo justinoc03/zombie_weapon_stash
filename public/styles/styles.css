@@ -329,6 +329,11 @@ text-shadow: 1px 1px black;
   background-color: black;
 }
 
+#globalTable{
+  margin-top: 100px;
+  max-width: 75%;
+}
+
 .list{
   list-style-type: none;
   width: 200px;
